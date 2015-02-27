@@ -15,7 +15,9 @@ const string added = "added to ";
 const string punctuation1 = ": \"";
 const string punctuation2 = "\"";
 const string punctuation3 = ". ";
-const string deleted = "deleted from ";
+const string cleared = "deleted from ";
+const string error = "Error: No such item.";
+const string deleted = "all content deleted from ";
 
 
 TextBuddy::TextBuddy(string fileName){
@@ -44,10 +46,18 @@ void TextBuddy::commandDelete(){
 	int deleteSentence;
 	cin >> deleteSentence;
 	if (deleteSentence <= (int)_descriptionStorage.size()){
-		cout << deleted << _fileName << punctuation1 << _descriptionStorage[deleteSentence-1] << punctuation2 << endl;
+		cout << cleared << _fileName << punctuation1 << _descriptionStorage[deleteSentence-1] << punctuation2 << endl;
 		_descriptionStorage.erase(_descriptionStorage.begin()+deleteSentence-1);
+	} else
+	{
+		cout << error << endl;
 	}
 }
 
-void TextBuddy::commandClear(){}
-void TextBuddy::commandExit(){}
+void TextBuddy::commandClear(){
+	_descriptionStorage.clear();
+	cout << deleted << _fileName << endl;
+}
+
+void TextBuddy::commandExit(){
+}
