@@ -2,6 +2,9 @@
 //Matric No.: A0116027R
 //CE2
 
+//assumptions: filename will be input by user in command window
+
+#include "TextBuddy.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -9,86 +12,55 @@
 
 using namespace std;
 
-//bool readingFile (string inputFile, vector<string> storageVector);
-
 int main(int argc, char* argv[])
 {
 	string fileName = argv[1];
-	string command;
-	string newDescription;
-	int n;
+	TextBuddy textBuddy(fileName);
+	string commandType;
+	const string command = "command: ";
+	const string commandTypeAdd = "add";
+	const string commandTypeDisplay = "display";
+	const string commandTypeDelete = "delete";
+	const string commandTypeClear = "clear";
+	const string commandTypeExit = "exit";
+	const string invalid = "Invalid command.";
+
+	textBuddy.displayMessage();
+
+	cout << command;
+	cin >> commandType;
 	
-	/*do {
-		cout << "command: ";
-		cin >> command;
-
-		if (command == "add"){
-			readingFile (fileName, descriptionStorage);
-
-			ofstream writeFile (fileName);
+	do{
+		if(command == commandTypeAdd){
+			string newDesc;
 			getchar();
-			getline (cin, newDescription);
-			descriptionStorage.push_back(newDescription);
-
-			for (int i=0; i<(int)descriptionStorage.size(); i++){
-			writeFile << descriptionStorage[i] << endl;
-			}
-			writeFile.close();
-
-			cout << "added to " << fileName << ": \"" << newDescription << "\"" << endl;
+			getline (cin, newDesc);
+			textBuddy.readingFile();
+			textBuddy.commandAdd(newDesc);
+			textBuddy.writingFile();
 		}
-		else if (command == "display"){
-			for (int i=0; i<(int)descriptionStorage.size(); i++){
-				cout << i+1 << ". " << descriptionStorage[i] << endl;
-			}
+		else if(command == commandTypeDisplay){
+			textBuddy.commandDisplay();
 		}
-		else if (command == "delete"){
-			readingFile (fileName, descriptionStorage);
-
-			cin >> n;
-			if (n <= (int)descriptionStorage.size()){
-				cout << "deleted from " << fileName << ": \"" << descriptionStorage[n-1] << "\"" << endl;
-				descriptionStorage.erase(descriptionStorage.begin()+n-1);
-
-				ofstream writeFile (fileName);
-				for (int i=0; i<(int)descriptionStorage.size(); i++){
-				writeFile << descriptionStorage[i] << endl;
-				}
-				writeFile.close();
-			} else
-			{
-				cout << "Error: No such item." << endl;
-			}
+		else if(command == commandTypeDelete){
+			int deleteSent;
+			cin >> deleteSent;
+			textBuddy.readingFile();
+			textBuddy.commandDelete(deleteSent);
+			textBuddy.writingFile();
 		}
-		else if (command == "clear"){
-			descriptionStorage.clear();
-
-			ofstream writeFile (fileName);
-			for (int i=0; i<(int)descriptionStorage.size(); i++){
-			writeFile << descriptionStorage[i] << endl;
-			}
-			writeFile.close();
-
-			cout << "all content deleted from " << fileName << endl;
+		else if(command == commandTypeClear){
+			textBuddy.readingFile();
+			textBuddy.commandClear();
+			textBuddy.writingFile();
 		}
-		else if (command == "exit"){
+		else if(command == commandTypeExit){
+			textBuddy.commandExit();
 		}
 		else{
-			cout << "Invalid command." << endl;
+			cout << invalid << endl;
 		}
-} while (command != "exit");
-*/
+	} while(command != commandTypeExit);
+
 	return 0;
 }
-
-/*bool readingFile (string inputFile, vector<string> storageVector){
-	ifstream readFile (inputFile);
-	string description;
-
-	while (getline(readFile, description)){
-		storageVector.push_back(description);
-	}
-		readFile.close();
-		return true;
-}
-*/

@@ -37,10 +37,7 @@ bool TextBuddy::writingFile(){
 	return true;
 }
 
-void TextBuddy::commandAdd(){
-	string newDescription;
-	getchar();
-	getline (cin, newDescription);
+void TextBuddy::commandAdd(string newDescription){
 	_descriptionStorage.push_back(newDescription);
 	cout << added << _fileName << punctuation1 << newDescription << punctuation2 << endl;
 }
@@ -51,21 +48,19 @@ void TextBuddy::commandDisplay(){
 	}
 }
 
-void TextBuddy::commandDelete(){
-	int deleteSentence;
-	cin >> deleteSentence;
+void TextBuddy::commandDelete(int deleteSentence){
 	if (deleteSentence <= (int)_descriptionStorage.size()){
-		cout << cleared << _fileName << punctuation1 << _descriptionStorage[deleteSentence-1] << punctuation2 << endl;
+		cout << deleted << _fileName << punctuation1 << _descriptionStorage[deleteSentence-1] << punctuation2 << endl;
 		_descriptionStorage.erase(_descriptionStorage.begin()+deleteSentence-1);
-	} else
-	{
+	} 
+	else{
 		cout << error << endl;
 	}
 }
 
 void TextBuddy::commandClear(){
 	_descriptionStorage.clear();
-	cout << deleted << _fileName << endl;
+	cout << cleared << _fileName << endl;
 }
 
 void TextBuddy::commandExit(){

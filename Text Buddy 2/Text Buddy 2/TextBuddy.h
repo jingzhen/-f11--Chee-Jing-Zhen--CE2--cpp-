@@ -16,29 +16,27 @@ const string added = "added to ";
 const string punctuation1 = ": \"";
 const string punctuation2 = "\"";
 const string punctuation3 = ". ";
-const string cleared = "deleted from ";
+const string deleted = "deleted from ";
 const string error = "Error: No such item.";
-const string deleted = "all content deleted from ";
+const string cleared = "all content deleted from ";
 
 class TextBuddy {
 private:
 	string _fileName;
-	vector<string> _descriptionStorage;
+	//vector<string> _descriptionStorage;
 
 public:
-	TextBuddy(string);
-	void displayMessage();
-	bool readingFile();
-	bool writingFile();
-	void commandAdd();
-	void commandDisplay();
-	void commandDelete();
-	void commandClear();
-	void commandExit();
+	vector<string> _descriptionStorage;
 
-
-	
-
+	TextBuddy(string); //constructor
+	void displayMessage(); //displays a welcome message
+	bool readingFile(); //returns true if file is read successfully
+	bool writingFile(); //returns true if file is written sucessfully
+	void commandAdd(string); //add a sentence from the file
+	void commandDisplay(); //display everything that is stored in the file
+	void commandDelete(int); //delete a specific sentence from the file
+	void commandClear(); //clear the file
+	void commandExit(); //exit a file
 };
 
 #endif
