@@ -6,19 +6,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
 
 using namespace std;
-
-const string welcome = "Welcome to TextBuddy. ";
-const string ready = " is ready for use";
-const string added = "added to ";
-const string punctuation1 = ": \"";
-const string punctuation2 = "\"";
-const string punctuation3 = ". ";
-const string cleared = "deleted from ";
-const string error = "Error: No such item.";
-const string deleted = "all content deleted from ";
-
 
 TextBuddy::TextBuddy(string fileName){
 	_fileName = fileName;
@@ -26,6 +16,17 @@ TextBuddy::TextBuddy(string fileName){
 
 void TextBuddy::displayMessage(){
 	cout << welcome << _fileName << ready << endl;
+}
+
+bool TextBuddy::readingFile(string inputFile, vector<string> storageVector){
+	ifstream readFile(inputFile);
+	string description;
+
+	while (getline(readFile, description)){
+		storageVector.push_back(description);
+	}
+		readFile.close();
+		return true;
 }
 
 void TextBuddy::commandAdd(){
