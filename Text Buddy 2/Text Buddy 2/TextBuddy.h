@@ -28,7 +28,8 @@ private:
 public:
 	TextBuddy(string);
 	void displayMessage();
-	bool readingFile(string, vector<string>);
+	bool readingFile();
+	bool writingFile();
 	void commandAdd();
 	void commandDisplay();
 	void commandDelete();

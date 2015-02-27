@@ -18,15 +18,23 @@ void TextBuddy::displayMessage(){
 	cout << welcome << _fileName << ready << endl;
 }
 
-bool TextBuddy::readingFile(string inputFile, vector<string> storageVector){
-	ifstream readFile(inputFile);
+bool TextBuddy::readingFile(){
+	ifstream readFile(_fileName);
 	string description;
-
 	while (getline(readFile, description)){
-		storageVector.push_back(description);
+		_descriptionStorage.push_back(description);
 	}
-		readFile.close();
-		return true;
+	readFile.close();
+	return true;
+}
+
+bool TextBuddy::writingFile(){
+	ofstream writeFile (_fileName);
+	for (int countSentence=0; countSentence<(int)_descriptionStorage.size(); countSentence++){
+		writeFile << _descriptionStorage[countSentence] << endl;
+	}
+	writeFile.close();
+	return true;
 }
 
 void TextBuddy::commandAdd(){
