@@ -18,7 +18,7 @@ private:
 public:
 	TextBuddy(string);
 	void displayMessage();
-	void commandAdd(string);
+	void commandAdd();
 	void commandDisplay();
 	void commandDelete();
 	void commandClear();

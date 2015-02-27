@@ -15,6 +15,7 @@ const string added = "added to ";
 const string punctuation1 = ": \"";
 const string punctuation2 = "\"";
 const string punctuation3 = ". ";
+const string deleted = "deleted from ";
 
 
 TextBuddy::TextBuddy(string fileName){
@@ -25,7 +26,8 @@ void TextBuddy::displayMessage(){
 	cout << welcome << _fileName << ready << endl;
 }
 
-void TextBuddy::commandAdd(string newDescription){
+void TextBuddy::commandAdd(){
+	string newDescription;
 	getchar();
 	getline (cin, newDescription);
 	_descriptionStorage.push_back(newDescription);
@@ -38,6 +40,14 @@ void TextBuddy::commandDisplay(){
 	}
 }
 
-void TextBuddy::commandDelete(){}
+void TextBuddy::commandDelete(){
+	int deleteSentence;
+	cin >> deleteSentence;
+	if (deleteSentence <= (int)_descriptionStorage.size()){
+		cout << deleted << _fileName << punctuation1 << _descriptionStorage[deleteSentence-1] << punctuation2 << endl;
+		_descriptionStorage.erase(_descriptionStorage.begin()+deleteSentence-1);
+	}
+}
+
 void TextBuddy::commandClear(){}
 void TextBuddy::commandExit(){}
