@@ -2,7 +2,8 @@
 //Matric No.: A0116027R
 //CE2
 
-//assumptions: filename will be input by user in command window
+/*assumptions: filename will be input by user in command window
+ command input will be in small letters*/
 
 #include "TextBuddy.h"
 #include <iostream>
@@ -12,9 +13,9 @@
 
 using namespace std;
 
-int main(int argc, char* argv[])
+int main(int argc/*, char* argv[]*/)
 {
-	string fileName = argv[1];
+	string fileName/* = argv[1]*/;
 	TextBuddy textBuddy(fileName);
 	string commandType;
 	const string command = "command: ";
@@ -24,6 +25,7 @@ int main(int argc, char* argv[])
 	const string commandTypeClear = "clear";
 	const string commandTypeExit = "exit";
 	const string invalid = "Invalid command.";
+	const string commandTypeSort = "sort";
 
 	textBuddy.displayMessage();
 
@@ -56,6 +58,9 @@ int main(int argc, char* argv[])
 		}
 		else if(command == commandTypeExit){
 			textBuddy.commandExit();
+		}
+		else if(command == commandTypeSort){
+			textBuddy.commandSort();
 		}
 		else{
 			cout << invalid << endl;

@@ -19,6 +19,7 @@ const string punctuation3 = ". ";
 const string deleted = "deleted from ";
 const string error = "Error: No such item.";
 const string cleared = "all content deleted from ";
+const string sorted = "all content sorted in ";
 
 class TextBuddy {
 private:
@@ -37,6 +38,7 @@ public:
 	void commandDelete(int); //delete a specific sentence from the file
 	void commandClear(); //clear the file
 	void commandExit(); //exit a file
+	void commandSort();
 };
 
 #endif

@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 using namespace std;
 
@@ -64,4 +65,9 @@ void TextBuddy::commandClear(){
 }
 
 void TextBuddy::commandExit(){
+}
+
+void TextBuddy::commandSort(){
+	sort(_descriptionStorage.begin(), _descriptionStorage.end());
+	cout << sorted << _fileName << endl;
 }
