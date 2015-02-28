@@ -19,13 +19,14 @@ int main(int argc/*, char* argv[]*/)
 	TextBuddy textBuddy(fileName);
 	string commandType;
 	const string command = "command: ";
+	const string invalid = "Invalid command.";
 	const string commandTypeAdd = "add";
 	const string commandTypeDisplay = "display";
 	const string commandTypeDelete = "delete";
 	const string commandTypeClear = "clear";
 	const string commandTypeExit = "exit";
-	const string invalid = "Invalid command.";
 	const string commandTypeSort = "sort";
+	const string commandTypeSearch = "search";
 
 	textBuddy.displayMessage();
 
@@ -42,7 +43,7 @@ int main(int argc/*, char* argv[]*/)
 			textBuddy.writingFile();
 		}
 		else if(command == commandTypeDisplay){
-			textBuddy.commandDisplay();
+			textBuddy.commandDisplay(textBuddy._descriptionStorage);
 		}
 		else if(command == commandTypeDelete){
 			int deleteSent;
@@ -61,6 +62,11 @@ int main(int argc/*, char* argv[]*/)
 		}
 		else if(command == commandTypeSort){
 			textBuddy.commandSort();
+		}
+		else if(command == commandTypeSearch){
+			string search;
+			getline(cin, search);
+			textBuddy.commandSearch(search);
 		}
 		else{
 			cout << invalid << endl;

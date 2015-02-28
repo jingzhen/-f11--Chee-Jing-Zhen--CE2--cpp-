@@ -43,9 +43,9 @@ void TextBuddy::commandAdd(string newDescription){
 	cout << added << _fileName << punctuation1 << newDescription << punctuation2 << endl;
 }
 
-void TextBuddy::commandDisplay(){
-	for (int countSentence=0; countSentence<(int)_descriptionStorage.size(); countSentence++){
-		cout << countSentence+1 << punctuation3 << _descriptionStorage[countSentence] << endl;
+void TextBuddy::commandDisplay(vector<string> displayVector){
+	for (int countSentence=0; countSentence<(int)displayVector.size(); countSentence++){
+		cout << countSentence+1 << punctuation3 << displayVector[countSentence] << endl;
 	}
 }
 
@@ -70,4 +70,17 @@ void TextBuddy::commandExit(){
 void TextBuddy::commandSort(){
 	sort(_descriptionStorage.begin(), _descriptionStorage.end());
 	cout << sorted << _fileName << endl;
+}
+
+vector<string> TextBuddy::commandSearch(string searchWord){
+	vector<string> searchStorageVector;
+	for(int countLine=0; countLine<(int)_descriptionStorage.size(); countLine++){
+		string line = _descriptionStorage[countLine];
+		size_t found = line.find(searchWord);
+		if (found != string::npos){
+			searchStorageVector.push_back(_descriptionStorage[countLine]);
+		}
+	}
+	commandDisplay(searchStorageVector);
+	return searchStorageVector;
 }

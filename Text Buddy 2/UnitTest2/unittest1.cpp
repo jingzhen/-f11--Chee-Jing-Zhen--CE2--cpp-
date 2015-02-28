@@ -24,10 +24,11 @@ namespace UnitTest2
 			testTextBuddy.commandAdd(test2);
 			testTextBuddy.commandAdd(test3);
 			testTextBuddy.commandAdd(test4);
-			vector<string> searchStorageVector = testTextBuddy.commandSearch(search);
+			vector<string> searchVector = testTextBuddy.commandSearch(search);
 
-			Assert::AreEqual(searchStorageVector[0], test1); //compare whether first vector string is string test1
-			Assert::AreEqual(searchStorageVector[2], test4); //compare whether third vector string is string test4 as test3 does not contain string search
+			Assert::AreEqual(searchVector[0], test1); //compare whether first string in vector is string test1
+			Assert::AreEqual(searchVector[1], test2); //compare whether second string in vector is string test2
+			Assert::AreEqual(searchVector[2], test4); //compare whether third string in vector is string test4 as test3 does not contain string search
 
 		}
 

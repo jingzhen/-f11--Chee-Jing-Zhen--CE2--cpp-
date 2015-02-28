@@ -24,7 +24,6 @@ const string sorted = "all content sorted in ";
 class TextBuddy {
 private:
 	string _fileName;
-	//vector<string> _descriptionStorage;
 
 public:
 	vector<string> _descriptionStorage;
@@ -34,11 +33,12 @@ public:
 	bool readingFile(); //returns true if file is read successfully
 	bool writingFile(); //returns true if file is written sucessfully
 	void commandAdd(string); //add a sentence from the file
-	void commandDisplay(); //display everything that is stored in the file
+	void commandDisplay(vector<string>); //display everything that is stored in the file
 	void commandDelete(int); //delete a specific sentence from the file
 	void commandClear(); //clear the file
-	void commandExit(); //exit a file
-	void commandSort();
+	void commandExit(); //exit the file
+	void commandSort(); //sort the file in ascending order
+	vector<string> commandSearch(string); //search the word in the file. return a string vector which contains the sentences where the word is found
 };
 
 #endif
