@@ -30,8 +30,7 @@ public:
 
 	TextBuddy(string); //constructor
 	void displayMessage(); //displays a welcome message
-	bool readingFile(); //returns true if file is read successfully
-	bool writingFile(); //returns true if file is written sucessfully
+	int commandType(string); //returns a number tagged to a particular command
 	void commandAdd(string); //add a sentence from the file
 	void commandDisplay(vector<string>); //display everything that is stored in the file
 	void commandDelete(int); //delete a specific sentence from the file

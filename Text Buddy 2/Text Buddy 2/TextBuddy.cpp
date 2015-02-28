@@ -13,29 +13,40 @@ using namespace std;
 
 TextBuddy::TextBuddy(string fileName){
 	_fileName = fileName;
+	_descriptionStorage.clear();
 }
 
 void TextBuddy::displayMessage(){
 	cout << welcome << _fileName << ready << endl;
 }
 
-bool TextBuddy::readingFile(){
-	ifstream readFile(_fileName);
-	string description;
-	while (getline(readFile, description)){
-		_descriptionStorage.push_back(description);
-	}
-	readFile.close();
-	return true;
-}
+int TextBuddy::commandType(string command){
+	enum commandTypes {Add, Display, Delete, Clear, Exit, Sort, Search
+	};
+	commandTypes commandEnum;
 
-bool TextBuddy::writingFile(){
-	ofstream writeFile (_fileName);
-	for (int countSentence=0; countSentence<(int)_descriptionStorage.size(); countSentence++){
-		writeFile << _descriptionStorage[countSentence] << endl;
+	if(command ==  "add"){
+		commandEnum = Add;
 	}
-	writeFile.close();
-	return true;
+	else if(command == "display"){
+		commandEnum = Display;
+	}
+	else if(command == "delete"){
+		commandEnum = Delete;
+	}
+	else if(command == "clear"){
+		commandEnum = Clear;
+	}
+	else if(command == "exit"){
+		commandEnum = Exit;
+	}
+	else if(command == "sort"){
+		commandEnum = Sort;
+	}
+	else if(command == "search"){
+		commandEnum = Search;
+	}
+	return commandEnum;
 }
 
 void TextBuddy::commandAdd(string newDescription){
@@ -65,10 +76,35 @@ void TextBuddy::commandClear(){
 }
 
 void TextBuddy::commandExit(){
+	return;
 }
 
 void TextBuddy::commandSort(){
-	sort(_descriptionStorage.begin(), _descriptionStorage.end());
+	vector<string> sortVector;
+	vector<string> tempVector;
+	int size = _descriptionStorage.size();
+	size_t start = 0, end = string::npos;
+	for (int countSentence=0; countSentence<size; countSentence++){
+		size_t end = _descriptionStorage[countSentence].find_first_of(".,!? ");
+		string firstWord = _descriptionStorage[countSentence].substr(start, end-start);
+		sortVector.push_back(firstWord);
+	}
+
+	sort(sortVector.begin(), sortVector.end()); //sort according to first word
+
+	for (int countSentence=0; countSentence<size; countSentence++){
+	for (int countWord=0; countWord<size; countWord++){
+		size_t found = _descriptionStorage[countSentence].find(sortVector[countWord]);
+		if(found = 0){
+		tempVector.push_back(_descriptionStorage[countSentence]);
+		}
+	}
+	}
+
+	for (int countTemp = 0; countTemp<size; countTemp++){
+		_descriptionStorage.push_back(tempVector[countTemp]);
+	}
+
 	cout << sorted << _fileName << endl;
 }
 
