@@ -52,7 +52,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\JINGZHEN\Documents\GitHub\CE2\Text Buddy 2\Text Buddy 2;$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\JINGZHEN\Documents\GitHub\[f11][Chee Jing Zhen][CE2][cpp]\Text Buddy 2\Text Buddy 2;C:\Users\JINGZHEN\Documents\GitHub\CE2\Text Buddy 2\Text Buddy 2;$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
     </ClCompile>

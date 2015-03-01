@@ -76,6 +76,7 @@ void TextBuddy::commandClear(){
 }
 
 void TextBuddy::commandExit(){
+	exit(0);
 	return;
 }
 
@@ -83,10 +84,17 @@ void TextBuddy::commandSort(){
 	vector<string> sortVector;
 	vector<string> tempVector;
 	int size = _descriptionStorage.size();
-	size_t start = 0, end = string::npos;
+	size_t start = 0, end = 0;
+	string firstWord;
+
 	for (int countSentence=0; countSentence<size; countSentence++){
-		size_t end = _descriptionStorage[countSentence].find_first_of(".,!? ");
-		string firstWord = _descriptionStorage[countSentence].substr(start, end-start);
+		end = _descriptionStorage[countSentence].find_first_of(".,!? ");
+		if (end != string::npos){
+			firstWord = _descriptionStorage[countSentence].substr(start, end-start);
+		}
+		else{
+			firstWord = _descriptionStorage[countSentence];
+		}
 		sortVector.push_back(firstWord);
 	}
 

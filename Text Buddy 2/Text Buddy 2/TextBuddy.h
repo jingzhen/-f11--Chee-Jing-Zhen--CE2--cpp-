@@ -37,7 +37,8 @@ public:
 	void commandClear(); //clear the file
 	void commandExit(); //exit the file
 	void commandSort(); //sort the file in ascending order
-	vector<string> commandSearch(string); //search the word in the file. return a string vector which contains the sentences where the word is found
+	vector<string> commandSearch(string); //search the word in the file. 
+										  //return a string vector which contains the sentences where the word is found
 };
 
 #endif
